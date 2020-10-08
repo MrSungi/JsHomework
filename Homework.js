@@ -26,6 +26,14 @@ console.log(mul(3, 4));
     idf();    // 3
 */
 
+function identify(k){
+    return ()=>{
+        return k;
+    }
+}
+
+const idf = identify(3);
+console.log(idf());
 
 
 /*
@@ -33,6 +41,14 @@ console.log(mul(3, 4));
     
     addf(3)(4);    // 7
 */
+
+function addf(a){
+    return (b)=>{
+        return a+b;
+    }
+}
+
+console.log(addf(3)(4));
 
 
 
@@ -44,6 +60,21 @@ console.log(mul(3, 4));
     applyf(mul)(5)(6);    // 30
 */
 
+function applyf(binary) {
+  return function(x) {
+    return function(y) {
+      return binary(x, y);
+    };
+  };
+}
+
+addf = applyf(add);
+addf(3)(4) //=> 7
+applyf(mul)(5)(6) //=> 30
+const addfu = applyf(add);
+const mulfu = applyf(mul);
+console.log(addfu(3)(4));
+console.log(mulfu(5)(6));
 
 
 /*
