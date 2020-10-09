@@ -116,14 +116,21 @@ function twice(binary){
 
     const double = twice(add);
     console.log(double(11));
-
-
-
+    const square = twice(mul);
+    console.log(square(11));
 /*
     7. Write a function composeu that takes two unary functions and returns a unary function that calls them both. 
 
     composeu(double, square)(3);    // 36
 */
+
+function composeu(fn1, fn2){
+    return (a)=>{
+        return fn2(fn1(a));
+    }
+}
+
+console.log(composeu(double, square)(3));
 
 
 
