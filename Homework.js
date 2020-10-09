@@ -141,6 +141,22 @@ console.log(composeu(double, square)(3));
     addg(1)(2)(4)(8)();  // 15
 */
 
+function addg(a) {
+    function many(b) {
+      if (b === undefined ) {
+        return a;
+      }
+      a += b;
+      return many;
+    }
+    if (a !== undefined ) {
+      return many;
+    }
+  }
+
+  console.log(addg(3)(4)(5)());
+  console.log(addg(1)(2)(4)(8)());
+
 
 
 /*
@@ -149,4 +165,22 @@ console.log(composeu(double, square)(3));
     applyg(add)(3)(4)(5)();       // 12 
     applyg(mul)(1)(2)(4)(8)();    // 64
 */
+
+function applyg(binary) {
+    return function (a) {
+      if (a === undefined ) {
+        return a;
+      }
+      return function many(b) {
+        if (b === undefined ) {
+          return a;
+        }
+        a = binary(a, b);
+        return many;
+      };
+    };
+  }
+
+  console.log(applyg(add)(3)(4)(5)());
+  console.log(applyg(mul)(1)(2)(4)(8)());
 
