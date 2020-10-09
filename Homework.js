@@ -83,19 +83,19 @@ console.log(mulfu(5)(6));
     curry(mul, 5)(6);    // 30  
 */
 
-// function curry(funct, a){
-//     return funct(x){
-//         return (a) =>{
-//             return unary(x,a);
-//         }
-//     }
-// }
+function curry(fn, ...args){
+        return (...arg)=>{
+            return fn(...args, ...arg);
+        }
+}
 
-// const add3 = curry(add,3);
-// const mul3 = curry(mul,5);
+const add3 = curry(add,3);
+debugger;
+const mul3 = curry(mul,5);
+debugger;
 
-// console.log(add3(add,4));
-// console.log(mul3(mul,6));
+console.log(add3(4));
+console.log(mul3(6));
 
 
 
