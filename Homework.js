@@ -108,6 +108,15 @@ console.log(mul3(6));
     square(11);    // 121
 */
 
+function twice(binary){
+    return (a)=>{
+        return binary(a, a);
+    }
+}
+
+    const double = twice(add);
+    console.log(double(11));
+
 
 
 /*
